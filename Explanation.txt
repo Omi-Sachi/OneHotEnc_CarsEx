@@ -1,11 +1,10 @@
 
-Here where i write what went wrong and how i fixed it
+Here is where I write what went wrong and how I fixed it
 
-First thing that went wrong: I couldn't read my csv file by calling the name i'd get the error file
- doesn't exsist in directory. - So i fixed that by copying the path and calling that isnide my pd.csv()
-fixed that problem right up!!!
+The first thing that went wrong was, that I couldn't read my CSV file by calling its name. I'd get the error message 'file
+ doesn't exist in the directory.' - So I fixed that by copying the path and calling that inside my pd.read_csv() fixed that problem right up!!!
 
-Second thing i was having problems with was removing categorical data from the df and also concatating it.
+The second thing I was having problems with was removing categorical data from the df and also concatenating it.
 I was taught to create an old column and remove that from the df but this did not work old code:
 
 # Remove categorical columns (will replace with one-hot encoding)
@@ -14,16 +13,18 @@ old_columns = df.drop('Car Model', axis=1)
 # Add one-hot encoded columns to numerical features
 OH_column = pd.concat([old_columns, OH_column], axis=1)
 
-Mistake one - Didn't use inplace = False, inplace will tell the computer wether i should return a new df or 
-alter the exsisting one. This caused my required Object column called Car Model to not be able to be concantaded.
+Mistake one - Didn't use inplace = False, inplace will tell the computer whether I should return a new df or 
+alter the existing one. This caused my required Object column called Car Model to not be able to be concatenated.
 
-I could have corrcted it to this:
+I could have corrected it to this:
 # Remove categorical columns (will replace with one-hot encoding)
 old_columns = df.drop('Car Model', axis=1, inplace=False)  # Add inplace=False
 
 # Add one-hot encoded columns to numerical features
 df = pd.concat([old_columns, OH_column], axis=1)  
 
-But i saw online a different method using:
+But I saw online a different method using:
 
 OH_column = pd.DataFrame(Encoder.fit_transform(df[Cols_to_OH]).toarray(), columns=Encoder.get_feature_names_out(Cols_to_OH))
+
+This was a great lesson!!! Can't wait to keep Learning...
