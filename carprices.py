@@ -13,7 +13,7 @@ Cols_to_OH = [cols for cols in df.columns if df[cols].dtype == "object"]
 
 # Apply one-hot encoding to columns
 Encoder = OneHotEncoder()
-OH_column = pd.DataFrame(Encoder.fit_transform(df[Cols_to_OH]).toarray(), columns=Encoder.get_feature_names_out(Cols_to_OH))  # Changed this line
+OH_column = pd.DataFrame(Encoder.fit_transform(df[Cols_to_OH]).toarray(), columns=Encoder.get_feature_names_out(Cols_to_OH))  # 
 
 # Drop original categorical columns
 df.drop(Cols_to_OH, axis=1, inplace=True)
